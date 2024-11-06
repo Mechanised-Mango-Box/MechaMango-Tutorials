@@ -1,7 +1,10 @@
 # Tutorial: Programmic Pixel Painter
 
 ## Course Structure
-1) **Theory (A)**: I/O, Conditions and Loops
+1) **Theory (Part 1)**: Syntax
+	1) Variables
+	2) Conditions
+	3) Functions
 2) **Exercises**: Input Validation and Drawing Shapes
 3) **Theory (B)**: Functions
 3) **Theory (C)**: Arrays and Matricies
@@ -26,8 +29,136 @@ It also expects *you* to do some **researching online** and **documentation read
 *The terminology may not be perfect but is aimed to be understandable.*
 ## Course
 
-### Theory (A)
+### Theory (Part 1)
 This is a few snippets of code to show how certain things work. The challanges are recommended to get a full understanding.
+
+#### Variables
+Similar to maths, there is a concept of **variables** - ***a container that can hold a specific type of value***.
+
+##### Declaration
+> To make a variable, first declare (will it into existance) it with `=`
+```py
+x: int = 10 # now we have a variable that represents 10 
+my_string: string = "a string of characters :D"
+y: float = 10.0 # a floating point (decimal)
+```
+
+##### Assignment
+> In a similar way, we can assign a value with `=`
+```py
+initially_empty: int # starts empty
+
+initially_empty = 42 # give it a new value
+initially_empty = 50 # override that value
+```
+
+##### Types
+> We see that there are a few different types of variables above. The ones we will use for now are summarised below:
+
+| Type | Uses |
+| --- | --- |
+| bool | A Boolean a.k.a True or False |
+| int | A integer number |
+| float | A floating point (decimal) number |
+| str | A string (of characters) |
+Notice how we always write out the type the variable is when we declare it, this is not strictly required but is good practice.
+
+##### General Operators
+> There are many different types of operations that you can do, but change depending on the type:
+###### Floats and Ints
+| Operator | Effect |
+| --- | --- |
+| `x + y` | Addition |
+| `x - y` | Subtraction |
+| `x * y` | Multiplication |
+| `x ** y` | Power (x to the power of y) |
+| `x / y` | Floating-Point Division |
+| `x // y` | Integer Division |
+| `x % y` | Division Remainder (Modulo) |
+###### Boolean
+| Operator | Effect |
+| --- | --- |
+| `and` | Union |
+| `or` | Intersection |
+| `not` | Negation |
+###### String
+| Operator | Effect |
+| --- | --- |
+| `+` | Concatenation |
+
+> So when we want to add a number to another:
+```py
+a: int = 10
+b: int = 11
+a + b # this does not do anything since we did not assign the result of the operation
+a = a + b # a is now 21
+```
+##### Assignment Operators
+> We can do the above but use a short hand where we have an `operator` then `=`
+```py
+a: int = 10
+b: int = 11
+a += b # this is now 21
+```
+##### Equality and Inequality Operators
+| Operator | Effect |
+| --- | --- |
+| `x == y` | Equals |
+| `x != y` | Not Equals |
+| `x < y` | Less Than |
+| `x <= y` | Less Than Or Equals |
+| `x > y` | Greater Than |
+| `x >= y` | Greater Than Or Equals |
+
+#### Functions
+Simply put, a function takes input (parameters), does something and **may** returns a singular output (return value)
+
+##### Uses of Functions
+Functions are useful for letting us repeat code without having to type it again or to group logic together.
+```py
+def my_func(first_number: int, second_number: int) -> str:
+	local_variable: str = "My number is: " # this only exists within the function
+	local_variable += str(first_number ** second_number)
+	return local_variable
+
+def my_other_func() -> str:
+	print("We can use this")
+	print("to group lines of code together")
+	print(my_func(3, 2))
+
+print(my_func(2, 3))
+my_other_func()
+```
+Functions can also be used within functions
+```py
+# you dont have to fully understand how this works for now
+def print_fancy_header(header_txt: str, gap_size: int) -> None:
+	header_length: int = len(header_txt) + 4
+	print(txt_with_gap(header_bar(header_length), gap_size))
+	print(txt_with_gap("| " + header_txt + " |", gap_size))
+	print(txt_with_gap(header_bar(header_length), gap_size))
+
+def header_bar(header_length: int) -> str:
+	header_str: str = '+'
+	for i in range(gap_size-2):
+		header_str += '='
+	return new_txt + '+'
+
+def txt_with_gap(txt: str, gap_size: int) -> str:
+	new_txt: str = ""
+	for i in range(gap_size):
+		new_txt += ' '
+	new_txt += txt
+	return new_txt
+
+print_fancy_header("What a fancy title indeed o_o", 5)
+```
+
+#### Anatomy of a Function
+```py
+def function_name(condition_1: param_type, condition_2, condition_x) -> return_type: # https://docs.python.org/3/tutorial/controlflow.html#defining-functions
+	return return_value # What value should this function return (give back), See: https://docs.python.org/3/reference/simple_stmts.html#return
+```
 
 #### I/O (input/output)
 > First let's get try and output something
@@ -83,9 +214,9 @@ else: # is not a digit
 > The if/else is rather self explanitory, and uses a **boolean expression** (true/false) to decide which block of code to run
 ```py
 if <condition>: # https://docs.python.org/3/tutorial/controlflow.html#if-statements
-	then do this
+	# then do this
 else: 
-	do this
+	# do this
 ```
 
 #### Loops
@@ -101,7 +232,7 @@ while counter > 0:
 	# See:
 	# - https://docs.python.org/3/reference/expressions.html#value-comparisons
 	# - https://docs.python.org/3/reference/compound_stmts.html#the-while-statement
-	print(counter + "...")
+	print(str(counter) + "...")
 	counter -= 1
 print("Lift off!")
 ```
@@ -118,7 +249,7 @@ for i in range(count_up): # Makes a set of numbers from 0 (inclusive) to count_u
 	print(i)
 ```
 
-> Challenge: Can you change the code so that it counts from 0 to 20 by 2? (`0, 2, ... , 18, 20`)
+> Challenge: Can you change the code so that it counts from 0 to count_up by 2? (`0, 2, 4, ...`)
 
 ### Exercises
 The following are exercises to do which will help you in the [[## Application]] section.
@@ -146,6 +277,20 @@ print("Valid! :D")
 ```
 
 #### Drawing Shapes
+Here are some exercises to put the theory into practice. **DO NOT use print(), instead use the provided function**
+```py
+def cprint(x)
+	print(x, end = "")
+
+cprint("1")
+cprint("2")
+cprint("3")
+cprint("\n") # a newline character - the equivalent of typing "enter"
+cprint("4567")
+cprint("89\n")
+cprint("10")
+```
+
 > Draw a line of `n` length, where `n` is given by input:
 
 **Input**:
@@ -158,6 +303,10 @@ print("Valid! :D")
 ```
 
 > Draw a square that is `n` by `n`:
+> 
+> Hint: Think of it as a grid
+> 
+> Hint: 2 `while` loops that increment `x` and `y`
 
 **Input**:
 ```
@@ -185,6 +334,10 @@ print("Valid! :D")
 ***
 ```
 > Draw a triangle that is `n` by `n`:
+> 
+> Hint: Use a `if`/`else` to choose if you should print a ` ` or `*` (space)
+>
+> Hint: Use how can you do this using the values of `n`, `x` and `y`
 
 **Input**:
 ```
@@ -268,41 +421,7 @@ print("Valid! :D")
 *------*
 ```
 
-### Theory (B)
-A quick section on the basics of functions.
-#### Anatomy of a Function
-```py
-def function_name(condition_1: int, condition_2, condition_x) -> bool: # https://docs.python.org/3/tutorial/controlflow.html#defining-functions
-	pass # for an empty function
-	return True == False # What value should this function return (give back), See: https://docs.python.org/3/reference/simple_stmts.html#return
-```
-
-#### Uses of Functions
-> Functions are useful for letting us repeat code without having to type it again.
-```py
-# Try to comment on each line with what each line does
-def print_fancy_header(header_txt: str, gap_size: int) -> None:
-	header_length: int = len(header_txt) + 4
-	print(txt_with_gap(header_bar(header_length), gap_size))
-	print(txt_with_gap("| " + header_txt + " |", gap_size))
-	print(txt_with_gap(header_bar(header_length), gap_size))
-
-def header_bar(header_length: int) -> str:
-	header_str: str = '+'
-	for i in range(gap_size-2):
-		header_str += '='
-	return new_txt + '+'
-
-def txt_with_gap(txt: str, gap_size: int) -> str:
-	new_txt: str = ""
-	for i in range(gap_size):
-		new_txt += ' '
-	new_txt += txt
-	return new_txt
-
-print_fancy_header("What a fancy title indeed o_o", 5)
-```
-### Theory (B)
+### Theory (Part 2)
 A quick section on arrays and matricies.
 
 #### Array (List)
@@ -334,8 +453,8 @@ row_3: List[int] = [7, 8, 9]
 > We can combine them to make a matrix (sometimes known as a 2D array)
 ```py
 matrix: List[List[int]] = [[1, 2, 3],
-						   [4, 5, 6],
-						   [7, 8, 9]]
+                           [4, 5, 6],
+                           [7, 8, 9]]
 ```
 > Challenge: Make a function that can print any `n` by `m` matrix neatly.
 
