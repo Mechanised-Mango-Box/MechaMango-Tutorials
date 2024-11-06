@@ -5,7 +5,7 @@
 	1) Variables
 	2) Conditions
 	3) Functions
-2) **Exercises**: Input Validation and Drawing Shapes
+2) **Exercises**: Drawing Shapes
 3) **Theory (Part 2)**: Arrays and Matricies
 4) **Application**: Making Pixel Art
 
