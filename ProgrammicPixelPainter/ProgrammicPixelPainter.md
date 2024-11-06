@@ -60,6 +60,7 @@ initially_empty = 50 # override that value
 | int | A integer number |
 | float | A floating point (decimal) number |
 | str | A string (of characters) |
+
 Notice how we always write out the type the variable is when we declare it, this is not strictly required but is good practice.
 
 ##### General Operators
