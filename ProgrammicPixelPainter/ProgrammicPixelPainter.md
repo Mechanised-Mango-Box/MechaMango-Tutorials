@@ -16,7 +16,7 @@
 - https://pythontutor.com/python-compiler.html
 
 ### Local
-- Python 3
+- Python 3 - https://www.python.org/downloads/
 	- NumPy - https://numpy.org/
 	- PIL - https://pillow.readthedocs.io/en/stable/
 - Code editor
